@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Email validation</title>
+    <script>
+        var emailRegEx=/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z]+)\.([a-zA-Z]{2,5})$/;
+        var mobRegEx=/^([^0-5]{1}[0-9]{9,9})$/;
+        function validate()
+        {
+        var email=document.getElementById('email').value;        
+            if(email=="")
+            {
+                document.getElementById('Err').innerHTML=" * Email can't be empty";
+            }  
+            else if(emailRegEx.test(email) && mobRegEx.test)
+            {
+                document.getElementById("Err").style.color="green";
+                document.getElementById("Err").innerHTML="Email id valid";
+            }  
+            else{
+                document.getElementById("Err").style.color="blue";
+                document.getElementById("Err").innerHTML="Email id not valid (email must be contain '@' and '.')";
+            }    
+        }
+        function validateMob()
+        {
+            var mob=document.getElementById('mob').value;             
+            if(mob=="")
+            {
+                document.getElementById('mobErr').innerHTML="Contact can't be empty";
+            }        
+            else if(mobRegEx.test(mob))
+            {
+                document.getElementById("mobErr").style.color="green";
+                document.getElementById('mobErr').innerHTML="Ok";
+            }
+            else{
+                document.getElementById("mobErr").style.color="blue";
+                document.getElementById('mobErr').innerHTML="contact no not valid";
+            }
+        }
+       
+    </script>
+</head>
+<body>
+        <div class="form-group row">      
+            <input type="text" id="email"  class=" form-control col-sm-4" onkeyup="validate()">
+            <p id="Err" style="color: red;"></p>
+        </div> 
+        <div class="form-group row">      
+            <input type="text" id="mob" class=" form-control col-sm-4" onkeyup="validateMob()" >
+            <p id="mobErr" style="color: red;"></p>
+        </div>    
+        <!-- <button onclick="validateMob()" class=" btn-primary">Validate</button> -->
+
+     
+</body>
+</html>
